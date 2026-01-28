@@ -1,0 +1,89 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { UserPlus } from "lucide-react";
+
+interface TeamMember {
+  id: string;
+  name: string;
+  task: string;
+  status: 'Completed' | 'In Progress' | 'Pending';
+  avatar?: string;
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    id: '1',
+    name: 'Alexandra Deff',
+    task: 'Upload GitHub Project Documentation',
+    status: 'Completed',
+  },
+  {
+    id: '2',
+    name: 'Edwin Adenike',
+    task: 'Archive Authentication System Docs',
+    status: 'In Progress',
+  },
+  {
+    id: '3',
+    name: 'Isaac Oluwafemi Orun',
+    task: 'Organize Search Feature Documents',
+    status: 'Pending',
+  },
+  {
+    id: '4',
+    name: 'David Oshodi',
+    task: 'Archive Homepage Design Files',
+    status: 'In Progress',
+  },
+];
+
+export default function TeamCollaborationWidget() {
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'Completed':
+        return 'bg-green-100 text-green-700';
+      case 'In Progress':
+        return 'bg-yellow-100 text-yellow-700';
+      case 'Pending':
+        return 'bg-pink-100 text-pink-700';
+      default:
+        return 'bg-gray-100 text-gray-700';
+    }
+  };
+
+  const getInitials = (name: string) => {
+    return name.split(' ').map(n => n[0]).join('').toUpperCase();
+  };
+
+  return (
+    <Card className="bg-white border-gray-200">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
+        <CardTitle className="text-lg font-semibold">Team Collaboration</CardTitle>
+        <Button variant="outline" size="sm" className="text-sm">
+          <UserPlus className="h-4 w-4 mr-1" />
+          Add Member
+        </Button>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {teamMembers.map((member) => (
+          <div key={member.id} className="flex items-start gap-3">
+            <Avatar className="h-10 w-10">
+              <AvatarImage src={member.avatar} />
+              <AvatarFallback className="bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] text-white text-xs">
+                {getInitials(member.name)}
+              </AvatarFallback>
+            </Avatar>
+            <div className="flex-1 min-w-0">
+              <p className="font-medium text-sm">{member.name}</p>
+              <p className="text-xs text-gray-600 mb-1">Working on {member.task}</p>
+              <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${getStatusColor(member.status)}`}>
+                {member.status}
+              </span>
+            </div>
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  );
+}
