@@ -13,17 +13,17 @@ export default function DashboardTable({ projects }: DashboardTableProps) {
   return (
     <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
          <div className="flex justify-between items-center mb-6">
-             <h3 className="font-semibold text-gray-900">Active Projects</h3>
+             <h3 className="font-semibold text-gray-900">Projets Actifs</h3>
              <div className="flex items-center gap-3">
                  <div className="relative">
                      <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                     <Input placeholder="Search project..." className="pl-8 h-9 w-[200px] bg-gray-50 border-transparent focus:bg-white transition-colors" />
+                     <Input placeholder="Rechercher un projet..." className="pl-8 h-9 w-[200px] bg-gray-50 border-transparent focus:bg-white transition-colors" />
                  </div>
                  <Button variant="outline" size="sm" className="h-9 gap-2">
-                     <Filter className="h-4 w-4" /> Filter
+                     <Filter className="h-4 w-4" /> Filtrer
                  </Button>
                  <Button size="sm" className="h-9">
-                     Exports
+                     Exporter
                  </Button>
              </div>
          </div>
@@ -33,11 +33,11 @@ export default function DashboardTable({ projects }: DashboardTableProps) {
                  <thead>
                      <tr className="border-b border-gray-100">
                          <th className="text-left py-3 px-4 text-xs font-medium text-gray-400 uppercase tracking-wider">ID</th>
-                         <th className="text-left py-3 px-4 text-xs font-medium text-gray-400 uppercase tracking-wider">Project Name</th>
-                         <th className="text-left py-3 px-4 text-xs font-medium text-gray-400 uppercase tracking-wider">Manager</th>
-                         <th className="text-left py-3 px-4 text-xs font-medium text-gray-400 uppercase tracking-wider">Status</th>
+                         <th className="text-left py-3 px-4 text-xs font-medium text-gray-400 uppercase tracking-wider">Nom du Projet</th>
+                         <th className="text-left py-3 px-4 text-xs font-medium text-gray-400 uppercase tracking-wider">Gestionnaire</th>
+                         <th className="text-left py-3 px-4 text-xs font-medium text-gray-400 uppercase tracking-wider">Statut</th>
                          <th className="text-right py-3 px-4 text-xs font-medium text-gray-400 uppercase tracking-wider">Budget</th>
-                         <th className="text-right py-3 px-4 text-xs font-medium text-gray-400 uppercase tracking-wider">Due Date</th>
+                         <th className="text-right py-3 px-4 text-xs font-medium text-gray-400 uppercase tracking-wider">Date d'Échéance</th>
                      </tr>
                  </thead>
                  <tbody className="divide-y divide-gray-50">
@@ -50,7 +50,7 @@ export default function DashboardTable({ projects }: DashboardTableProps) {
                                      <Avatar className="h-6 w-6">
                                          <AvatarFallback className="text-[9px] bg-orange-100 text-orange-600">MG</AvatarFallback>
                                      </Avatar>
-                                     <span className="text-sm text-gray-600">Manager Name</span>
+                                     <span className="text-sm text-gray-600">Nom du Gestionnaire</span>
                                  </div>
                              </td>
                              <td className="py-4 px-4">

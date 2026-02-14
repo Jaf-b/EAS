@@ -22,21 +22,21 @@ export default function RevenueChart() {
     <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-full">
          <div className="flex justify-between items-start mb-6">
             <div>
-                 <h3 className="font-semibold text-gray-900 mb-1">Revenue and Expenses</h3>
+                 <h3 className="font-semibold text-gray-900 mb-1">Revenus et Dépenses</h3>
                  <div className="flex gap-4 text-sm">
                      <div className="flex items-center gap-1.5">
                          <div className="h-2 w-2 rounded-full bg-pink-500" />
-                         <span className="text-muted-foreground">Revenue <span className="text-gray-900 font-semibold">$3,342</span></span>
+                         <span className="text-muted-foreground">Revenus <span className="text-gray-900 font-semibold">$3,342</span></span>
                      </div>
                       <div className="flex items-center gap-1.5">
                          <div className="h-2 w-2 rounded-full bg-blue-500" />
-                         <span className="text-muted-foreground">Expenses <span className="text-gray-900 font-semibold">$3,029</span></span>
+                         <span className="text-muted-foreground">Dépenses <span className="text-gray-900 font-semibold">$3,029</span></span>
                      </div>
                  </div>
             </div>
             <div className="flex items-center gap-2">
                  <Button variant="outline" size="sm" className="h-8 text-xs gap-2">
-                     <Calendar className="h-3 w-3" /> This Month
+                     <Calendar className="h-3 w-3" /> Ce Mois-ci
                  </Button>
                  <button className="text-gray-400 hover:text-gray-600">
                     <MoreHorizontal className="h-4 w-4" />

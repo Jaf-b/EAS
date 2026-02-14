@@ -16,10 +16,10 @@ export default function ProjectListWidget({ projects }: ProjectListWidgetProps) 
   return (
     <Card className="bg-white border-gray-200">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-        <CardTitle className="text-lg font-semibold">Project</CardTitle>
+        <CardTitle className="text-lg font-semibold">Projet</CardTitle>
         <Button variant="outline" size="sm" className="text-sm">
           <Plus className="h-4 w-4 mr-1" />
-          New
+          Nouveau
         </Button>
       </CardHeader>
       <CardContent className="space-y-3">
@@ -47,7 +47,7 @@ export default function ProjectListWidget({ projects }: ProjectListWidgetProps) 
               </div>
               <div className="text-right">
                 <div className={`text-[10px] px-1.5 py-0.5 rounded ${videoCount > 0 ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
-                  {videoCount > 0 ? 'Archived' : 'Pending'}
+                  {videoCount > 0 ? 'Archivé' : 'En attente'}
                 </div>
               </div>
             </div>

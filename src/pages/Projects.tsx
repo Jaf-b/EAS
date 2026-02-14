@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Plus, Search } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/components/ui/use-toast";
 import AddProjectModal from "./AddProjectModal"; // We'll create this next
 import { cn } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
@@ -14,19 +13,21 @@ export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const { toast } = useToast();
 
   useEffect(() => {
     loadProjects();
+    
+    // Listen for project added event
+    const handleProjectAdded = () => {
+      loadProjects();
+    };
+    
+    window.addEventListener('projectAdded', handleProjectAdded);
+    return () => window.removeEventListener('projectAdded', handleProjectAdded);
   }, []);
 
   const loadProjects = () => {
     setProjects(StorageService.getProjects());
-  };
-
-  const handleProjectAdded = (project: Project) => {
-    setProjects([...projects, project]); // detailed saving is handled in modal
-    toast({ title: "Projet créé", description: `Le projet "${project.name}" a été créé.` });
   };
 
   const filteredProjects = projects.filter(p => 
@@ -74,9 +75,8 @@ export default function Projects() {
 
       {isAddModalOpen && (
         <AddProjectModal 
-          isOpen={isAddModalOpen} 
-          onClose={() => setIsAddModalOpen(false)} 
-          onSave={handleProjectAdded} 
+          open={isAddModalOpen}
+          onOpenChange={setIsAddModalOpen}
         />
       )}
     </div>

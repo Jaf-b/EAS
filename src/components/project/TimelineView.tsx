@@ -45,7 +45,7 @@ export default function TimelineView({ tasks, onEditTask }: TimelineViewProps) {
                  </span>
                  {selectedDate && (
                     <Button variant="secondary" size="sm" onClick={() => setSelectedDate(null)} className="ml-4 h-7 text-xs">
-                        Clear Date Filter
+                        Effacer le Filtre de Date
                     </Button>
                  )}
              </div>
@@ -55,14 +55,14 @@ export default function TimelineView({ tasks, onEditTask }: TimelineViewProps) {
         {selectedDate ? (
             <div className="flex-1 overflow-y-auto p-4 bg-white rounded-xl border">
                 <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                    Tasks for {selectedDate.toLocaleDateString()}
+                    Tâches pour {selectedDate.toLocaleDateString('fr-FR')}
                     <span className="text-sm font-normal text-muted-foreground">({filteredTasks.length})</span>
                 </h3>
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {filteredTasks.map(task => (
                         <TaskCard key={task.id} task={task} onEdit={onEditTask} />
                     ))}
-                    {filteredTasks.length === 0 && <p className="text-muted-foreground">No tasks scheduled for this day.</p>}
+                    {filteredTasks.length === 0 && <p className="text-muted-foreground">Aucune tâche prévue pour ce jour.</p>}
                 </div>
             </div>
         ) : (

@@ -47,11 +47,11 @@ export default function AddTaskModal({ isOpen, onClose, onSave, onDelete, member
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>{taskToEdit ? "Edit Task" : "Add New Task"}</DialogTitle>
+          <DialogTitle>{taskToEdit ? "Éditer la Tâche" : "Ajouter une Nouvelle Tâche"}</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="grid gap-4 py-4">
           <div className="grid gap-2">
-            <Label htmlFor="title">Task Title</Label>
+            <Label htmlFor="title">Titre de la Tâche</Label>
             <Input id="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
           </div>
           <div className="grid gap-2">
@@ -60,27 +60,27 @@ export default function AddTaskModal({ isOpen, onClose, onSave, onDelete, member
           </div>
           <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="priority">Priority</Label>
+                <Label htmlFor="priority">Priorité</Label>
                 <select 
                     id="priority" 
                     className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                     value={priority}
                     onChange={(e) => setPriority(e.target.value as Priority)}
                 >
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
+                    <option value="low">Faible</option>
+                    <option value="medium">Moyen</option>
+                    <option value="high">Élevé</option>
                 </select>
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="assignee">Assignee</Label>
+                <Label htmlFor="assignee">Assigné</Label>
                 <select 
                     id="assignee" 
                     className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                     value={assigneeId}
                     onChange={(e) => setAssigneeId(e.target.value)}
                 >
-                    <option value="">Select...</option>
+                    <option value="">Sélectionner...</option>
                     {members.map(m => (
                         <option key={m.id} value={m.id}>{m.username}</option>
                     ))}
@@ -88,20 +88,20 @@ export default function AddTaskModal({ isOpen, onClose, onSave, onDelete, member
               </div>
           </div>
            <div className="grid gap-2">
-            <Label htmlFor="start">Start Time</Label>
+            <Label htmlFor="start">Heure de Début</Label>
             <Input id="start" type="datetime-local" value={startTime} onChange={(e) => setStartTime(e.target.value)} required />
           </div>
           <div className="flex justify-between mt-4">
              {taskToEdit && onDelete ? (
                  <Button type="button" variant="destructive" onClick={() => onDelete(taskToEdit.id)}>
-                     Delete Task
+                     Supprimer la Tâche
                  </Button>
              ) : (
                  <div /> 
              )}
              <div className="flex gap-2">
-                <Button type="button" variant="outline" onClick={onClose}>Cancel</Button>
-                <Button type="submit">{taskToEdit ? "Save Changes" : "Create Task"}</Button>
+                <Button type="button" variant="outline" onClick={onClose}>Annuler</Button>
+                <Button type="submit">{taskToEdit ? "Enregistrer les Modifications" : "Créer la Tâche"}</Button>
              </div>
           </div>
         </form>

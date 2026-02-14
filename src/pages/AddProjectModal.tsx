@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Project } from "@/types";
 import { StorageService } from "@/lib/storage";
 import { Loader2 } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 interface AddProjectModalProps {
   open: boolean;
@@ -13,6 +14,7 @@ interface AddProjectModalProps {
 }
 
 export default function AddProjectModal({ open, onOpenChange }: AddProjectModalProps) {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -39,38 +41,46 @@ export default function AddProjectModal({ open, onOpenChange }: AddProjectModalP
 
     StorageService.saveProject(newProject);
     setIsLoading(false);
+    
+    // Show success toast
+    toast({ 
+      title: "Projet créé", 
+      description: `Le projet "${newProject.name}" a été créé avec succès.` 
+    });
+    
     onOpenChange(false);
-    window.location.reload(); // Refresh to show new project
+    // Trigger a custom event to notify the Projects page to reload
+    window.dispatchEvent(new CustomEvent('projectAdded'));
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md max-h-[85vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-xl">New Project</DialogTitle>
+          <DialogTitle className="text-xl">Nouveau Projet</DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="space-y-1.5">
-            <Label htmlFor="name" className="text-sm">Project Name</Label>
+            <Label htmlFor="name" className="text-sm">Nom du Projet</Label>
             <Input 
               id="name" 
               required 
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
-              placeholder="e.g., Horizon Tower"
+              placeholder="ex: Tour Horizon"
               className="h-9"
             />
           </div>
           
           <div className="space-y-1.5">
-            <Label htmlFor="location" className="text-sm">Location</Label>
+            <Label htmlFor="location" className="text-sm">Emplacement</Label>
             <Input 
               id="location" 
               required
               value={formData.location}
               onChange={(e) => setFormData({...formData, location: e.target.value})}
-              placeholder="e.g., Downtown"
+              placeholder="ex: Centre-ville"
               className="h-9"
             />
           </div>
@@ -84,23 +94,23 @@ export default function AddProjectModal({ open, onOpenChange }: AddProjectModalP
               required
               value={formData.budget}
               onChange={(e) => setFormData({...formData, budget: Number(e.target.value)})}
-              placeholder="e.g., 120000"
+              placeholder="ex: 120000"
               className="h-9"
             />
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="status" className="text-sm">Status</Label>
+            <Label htmlFor="status" className="text-sm">Statut</Label>
             <select 
               id="status"
               className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
               value={formData.status}
               onChange={(e) => setFormData({...formData, status: e.target.value as Project['status']})}
             >
-              <option value="planning">Planning</option>
-              <option value="in-progress">In Progress</option>
-              <option value="completed">Completed</option>
-              <option value="on-hold">On Hold</option>
+              <option value="planning">Planification</option>
+              <option value="in-progress">En cours</option>
+              <option value="completed">Terminé</option>
+              <option value="on-hold">En pause</option>
             </select>
           </div>
 
@@ -111,12 +121,12 @@ export default function AddProjectModal({ open, onOpenChange }: AddProjectModalP
               className="flex w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm min-h-[60px] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
               value={formData.description}
               onChange={(e) => setFormData({...formData, description: e.target.value})}
-              placeholder="Brief project description..."
+              placeholder="Brève description du projet..."
             />
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="startDate" className="text-sm">Start Date</Label>
+            <Label htmlFor="startDate" className="text-sm">Date de Début</Label>
             <Input 
               id="startDate"
               type="date"
@@ -129,11 +139,11 @@ export default function AddProjectModal({ open, onOpenChange }: AddProjectModalP
 
           <div className="flex justify-end gap-2 pt-2">
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)} size="sm">
-              Cancel
+              Annuler
             </Button>
             <Button type="submit" disabled={isLoading} size="sm">
               {isLoading ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-2" /> : null}
-              Create Project
+              Créer le Projet
             </Button>
           </div>
         </form>

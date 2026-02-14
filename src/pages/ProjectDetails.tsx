@@ -42,7 +42,7 @@ export default function ProjectDetails() {
          else setCurView('kanban');
 
        } else {
-         toast({ variant: "destructive", title: "Not Found", description: "Project not found." });
+          toast({ variant: "destructive", title: "Non trouvé", description: "Projet non trouvé." });
          navigate('/projects');
        }
     }
@@ -91,7 +91,7 @@ export default function ProjectDetails() {
                        <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => navigate('/projects')}>
                            <ArrowLeft className="h-3 w-3" />
                        </Button>
-                       <span>Main Menu</span> / <span>Project</span> / <span className="text-gray-900 font-medium">#{project.id.substring(0,4)} - {project.name}</span>
+                       <span>Menu Principal</span> / <span>Projet</span> / <span className="text-gray-900 font-medium">#{project.id.substring(0,4)} - {project.name}</span>
                   </div>
                   
                   <div className="flex items-center gap-4">
@@ -106,13 +106,13 @@ export default function ProjectDetails() {
 
                   <div className="flex items-center gap-6 text-sm mt-4">
                       <div className="flex items-center gap-2">
-                          <span className="text-muted-foreground flex items-center gap-1"><Settings className="h-3 w-3" /> Status</span>
+                          <span className="text-muted-foreground flex items-center gap-1"><Settings className="h-3 w-3" /> Statut</span>
                           <Badge variant="outline" className="bg-gray-50 text-gray-700 border-gray-200">
-                              In Progress
+                              En cours
                           </Badge>
                       </div>
                       <div className="flex items-center gap-2">
-                          <span className="text-muted-foreground">Assignee</span>
+                          <span className="text-muted-foreground">Assigné</span>
                           <div className="flex items-center gap-2">
                                {members.slice(0,3).map((m: any) => (
                                    <div key={m.id} className="flex items-center gap-1">
@@ -137,7 +137,7 @@ export default function ProjectDetails() {
                         className={`h-7 text-xs ${curView === 'timeline' ? 'bg-white shadow-sm' : ''}`}
                         onClick={() => setCurView('timeline')}
                        >
-                           Timeline
+                           Chronologie
                        </Button>
                        <Button 
                         variant={curView === 'kanban' ? 'secondary' : 'ghost'} 
@@ -151,7 +151,7 @@ export default function ProjectDetails() {
 
                   {user?.role !== 'pdg' && (
                       <Button size="sm" className="gap-2" onClick={() => setIsAddTaskOpen(true)}>
-                         <Plus className="h-4 w-4" /> New Task
+                         <Plus className="h-4 w-4" /> Nouvelle Tâche
                       </Button>
                   )}
                   <Button size="icon" variant="ghost">

@@ -38,7 +38,7 @@ export default function TimeTrackerWidget() {
       </div>
       
       <CardHeader className="relative z-10 pb-2">
-        <CardTitle className="text-sm font-semibold text-white">Archival Work Timer</CardTitle>
+        <CardTitle className="text-sm font-semibold text-white">Minuteur de Travail d'Archivage</CardTitle>
       </CardHeader>
       <CardContent className="relative z-10 pb-3">
         <div className="text-3xl font-bold text-center mb-3 tracking-wider">

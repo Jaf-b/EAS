@@ -28,7 +28,7 @@ export default function KPICard({ title, value, change, trend }: KPICardProps) {
                {trend === "up" ? <ArrowUpRight className="h-3 w-3" /> : <ArrowDownRight className="h-3 w-3" />}
                {change}
            </span>
-           <span className="text-xs text-muted-foreground">Than last week</span>
+           <span className="text-xs text-muted-foreground">Par rapport à la semaine dernière</span>
         </div>
       </div>
     </div>

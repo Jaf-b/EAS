@@ -7,7 +7,7 @@ interface TeamMember {
   id: string;
   name: string;
   task: string;
-  status: 'Completed' | 'In Progress' | 'Pending';
+  status: 'Terminé' | 'En cours' | 'En attente';
   avatar?: string;
 }
 
@@ -15,37 +15,37 @@ const teamMembers: TeamMember[] = [
   {
     id: '1',
     name: 'Alexandra Deff',
-    task: 'Upload GitHub Project Documentation',
-    status: 'Completed',
+    task: 'Télécharger la Documentation du Projet GitHub',
+    status: 'Terminé',
   },
   {
     id: '2',
     name: 'Edwin Adenike',
-    task: 'Archive Authentication System Docs',
-    status: 'In Progress',
+    task: 'Archiver les Docs du Système d\'Authentification',
+    status: 'En cours',
   },
   {
     id: '3',
     name: 'Isaac Oluwafemi Orun',
-    task: 'Organize Search Feature Documents',
-    status: 'Pending',
+    task: 'Organiser les Documents de la Fonctionnalité de Recherche',
+    status: 'En attente',
   },
   {
     id: '4',
     name: 'David Oshodi',
-    task: 'Archive Homepage Design Files',
-    status: 'In Progress',
+    task: 'Archiver les Fichiers de Design de la Page d\'Accueil',
+    status: 'En cours',
   },
 ];
 
 export default function TeamCollaborationWidget() {
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Completed':
+      case 'Terminé':
         return 'bg-green-100 text-green-700';
-      case 'In Progress':
+      case 'En cours':
         return 'bg-yellow-100 text-yellow-700';
-      case 'Pending':
+      case 'En attente':
         return 'bg-pink-100 text-pink-700';
       default:
         return 'bg-gray-100 text-gray-700';
@@ -59,10 +59,10 @@ export default function TeamCollaborationWidget() {
   return (
     <Card className="bg-white border-gray-200">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-        <CardTitle className="text-lg font-semibold">Team Collaboration</CardTitle>
+        <CardTitle className="text-lg font-semibold">Collaboration d'Équipe</CardTitle>
         <Button variant="outline" size="sm" className="text-sm">
           <UserPlus className="h-4 w-4 mr-1" />
-          Add Member
+          Ajouter un Membre
         </Button>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -76,7 +76,7 @@ export default function TeamCollaborationWidget() {
             </Avatar>
             <div className="flex-1 min-w-0">
               <p className="font-medium text-sm">{member.name}</p>
-              <p className="text-xs text-gray-600 mb-1">Working on {member.task}</p>
+              <p className="text-xs text-gray-600 mb-1">Travaille sur {member.task}</p>
               <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${getStatusColor(member.status)}`}>
                 {member.status}
               </span>

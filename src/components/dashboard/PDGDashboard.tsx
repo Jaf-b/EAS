@@ -27,25 +27,25 @@ export default function PDGDashboard({ projects }: PDGDashboardProps) {
       {/* KPI Row */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <KPICard 
-            title="Total Revenue" 
+            title="Revenu Total" 
             value={`$${totalBudget.toLocaleString()}`} 
             change="2.8%" 
             trend="up" 
         />
         <KPICard 
-            title="Active Projects" 
+            title="Projets Actifs" 
             value={activeProjects.toString()} 
             change="2.4%" 
             trend="up"
         />
         <KPICard 
-            title="Total Sales" 
+            title="Ventes Totales" 
             value="$217,027" 
             change="2.9%" 
             trend="down"
         />
         <KPICard 
-            title="Total Employees" 
+            title="Total Employés" 
             value="7,273" 
             change="2.1%" 
             trend="up"

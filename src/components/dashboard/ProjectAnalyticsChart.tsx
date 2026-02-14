@@ -15,8 +15,8 @@ export default function ProjectAnalyticsChart() {
   return (
     <Card className="bg-white border-gray-200">
       <CardHeader className="pb-2">
-        <CardTitle className="text-sm font-semibold">Document Archival Analytics</CardTitle>
-        <CardDescription className="text-xs">Documents archived per day this week</CardDescription>
+        <CardTitle className="text-sm font-semibold">Analytique d'Archivage de Documents</CardTitle>
+        <CardDescription className="text-xs">Documents archivés par jour cette semaine</CardDescription>
       </CardHeader>
       <CardContent className="pb-3">
         <ResponsiveContainer width="100%" height={150}>

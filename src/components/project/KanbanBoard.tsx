@@ -76,9 +76,9 @@ export default function KanbanBoard({ tasks, onTaskUpdate, onEditTask }: KanbanB
   );
 
   const columns: { id: Task['status']; title: string; color: string }[] = [
-    { id: 'todo', title: 'To Do', color: 'bg-gray-100' },
-    { id: 'in-progress', title: 'Pending', color: 'bg-blue-50' }, // Renamed to Pending as requested
-    { id: 'done', title: 'Done', color: 'bg-green-50' }
+    { id: 'todo', title: 'À Faire', color: 'bg-gray-100' },
+    { id: 'in-progress', title: 'En cours', color: 'bg-blue-50' }, // Renamed to Pending as requested
+    { id: 'done', title: 'Terminé', color: 'bg-green-50' }
   ];
 
   const handleDragStart = (event: DragStartEvent) => {
@@ -130,7 +130,7 @@ export default function KanbanBoard({ tasks, onTaskUpdate, onEditTask }: KanbanB
                 isOpen={!!verifyingTask} 
                 onClose={() => {
                     setVerifyingTask(null);
-                    toast({ description: "Move cancelled. Video verification required.", variant: "destructive" });
+                    toast({ description: "Déplacement annulé. Vérification vidéo requise.", variant: "destructive" });
                 }} 
                 onSuccess={handleVerificationSuccess}
                 task={verifyingTask}

@@ -3,9 +3,9 @@ import { Progress } from "@/components/ui/progress";
 
 export default function PerformanceWidget() {
   const metrics = [
-    { label: "Product Sales", value: 75, target: "$367K", color: "bg-green-500" }, // In our context: Project Completion
-    { label: "Team KPI", value: 64, target: "64%", color: "bg-pink-500" }, // Safety Score
-    { label: "Customer Satisfaction", value: 89, target: "89%", color: "bg-blue-500" }, // Client Satisfaction
+    { label: "Ventes de Produits", value: 75, target: "$367K", color: "bg-green-500" }, // In our context: Project Completion
+    { label: "KPI de l'Équipe", value: 64, target: "64%", color: "bg-pink-500" }, // Safety Score
+    { label: "Satisfaction Client", value: 89, target: "89%", color: "bg-blue-500" }, // Client Satisfaction
   ];
 
   return (
@@ -31,7 +31,7 @@ export default function PerformanceWidget() {
                   </div>
                   <div className="space-y-1">
                       <div className="flex justify-between text-xs text-muted-foreground">
-                          <span>Target achieved!</span>
+                          <span>Objectif atteint !</span>
                           <span className="font-semibold text-gray-900">{m.target}</span>
                       </div>
                       <Progress value={m.value} className="h-2" indicatorColor={m.color} />

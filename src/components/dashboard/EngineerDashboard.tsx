@@ -31,8 +31,8 @@ export default function EngineerDashboard({ projects }: EngineerDashboardProps) 
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Document Archive Dashboard</h1>
-          <p className="text-sm text-gray-500 mt-0.5">Manage and track all project documentation and archival tasks.</p>
+          <h1 className="text-2xl font-bold text-gray-900">Tableau de Bord des Archives</h1>
+          <p className="text-sm text-gray-500 mt-0.5">Gérez et suivez toute la documentation et les tâches d'archivage des projets.</p>
         </div>
         <div className="flex gap-2">
           <button 
@@ -40,10 +40,10 @@ export default function EngineerDashboard({ projects }: EngineerDashboardProps) 
             className="px-3 py-1.5 text-sm bg-[#2563eb] text-white rounded-lg hover:bg-[#1d4ed8] transition-colors flex items-center gap-2"
           >
             <TrendingUp className="h-3.5 w-3.5" />
-            Upload Documents
+            Télécharger des Documents
           </button>
           <button className="px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-            Export Archive
+            Exporter l'Archive
           </button>
         </div>
       </div>
@@ -51,27 +51,27 @@ export default function EngineerDashboard({ projects }: EngineerDashboardProps) 
       {/* Stats Cards */}
       <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
         <StatsCard
-          title="Total Documents"
+          title="Documents Totaux"
           value={totalDocuments}
-          change="Across all projects"
+          change="Dans tous les projets"
           icon={FolderKanban}
         />
         <StatsCard
-          title="Archived Documents"
+          title="Documents Archivés"
           value={archivedDocuments}
-          change="Successfully archived"
+          change="Archivés avec succès"
           icon={FolderCheck}
         />
         <StatsCard
-          title="Pending Documents"
+          title="Documents en Attente"
           value={pendingDocuments}
-          change="Awaiting archival"
+          change="En attente d'archivage"
           icon={FolderClock}
         />
         <StatsCard
-          title="This Month"
+          title="Ce Mois-ci"
           value={documentsThisMonth}
-          subtitle="Documents archived"
+          subtitle="Documents archivés"
           icon={FolderX}
         />
       </div>
